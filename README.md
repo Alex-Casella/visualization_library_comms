@@ -16,6 +16,8 @@ simple-eda-project/
 │   └── simple_eda/
 │       ├── __init__.py
 │       └── core.py
+├── tests/
+│   └── test_core.py
 ├── README.md
 ├── pyproject.toml
 └── LICENSE
@@ -80,6 +82,13 @@ from simple_eda import line, bar, scatter, hist
 line(df, x="month", y="revenue").save("line.png")
 scatter(df, x="cost", y="revenue").show()
 hist(df, "revenue", bins=10).save("dist.png")
+```
+
+## Run the tests
+
+```bash
+pip install -e ".[test]"
+pytest -q
 ```
 
 ## License
