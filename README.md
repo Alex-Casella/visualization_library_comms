@@ -16,6 +16,9 @@ simple-eda-project/
 │   └── simple_eda/
 │       ├── __init__.py
 │       └── core.py
+├── examples/
+│   ├── quickstart.py
+│   └── images/
 ├── tests/
 │   └── test_core.py
 ├── README.md
