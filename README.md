@@ -1,26 +1,37 @@
-# pandaviz
+# simple-eda
 
-A minimal, pandas-first visualization library. `pandaviz` is a thin,
-opinionated wrapper over [matplotlib](https://matplotlib.org/) that turns
-pandas `DataFrame`s and `Series` into clean charts through a small fluent API —
-sensible defaults, a colorblind-friendly palette, and no boilerplate.
+A minimal, pandas-first visualization library for exploratory data analysis.
+`simple_eda` is a thin, opinionated wrapper over
+[matplotlib](https://matplotlib.org/) that turns pandas `DataFrame`s and
+`Series` into clean charts through a small fluent API — sensible defaults, a
+colorblind-friendly palette, and no boilerplate.
 
-The entire library is a single ~120-line module.
+The entire library is a single ~120-line module (`simple_eda/core.py`).
+
+## Layout
+
+```
+simple-eda-project/
+├── src/
+│   └── simple_eda/
+│       ├── __init__.py
+│       └── core.py
+├── README.md
+├── pyproject.toml
+└── LICENSE
+```
 
 ## Install
 
 ```bash
-pip install pandas matplotlib
+pip install -e .          # installs simple_eda plus pandas + matplotlib
 ```
-
-Then drop the `pandaviz/` package into your project (or put this repo on your
-`PYTHONPATH`).
 
 ## Quick start
 
 ```python
 import pandas as pd
-from pandaviz import Chart
+from simple_eda import Chart
 
 df = pd.DataFrame({
     "month":   ["Jan", "Feb", "Mar", "Apr"],
@@ -64,22 +75,13 @@ when there's more than one series.
 For quick plots without chaining:
 
 ```python
-from pandaviz import line, bar, scatter, hist
+from simple_eda import line, bar, scatter, hist
 
 line(df, x="month", y="revenue").save("line.png")
 scatter(df, x="cost", y="revenue").show()
 hist(df, "revenue", bins=10).save("dist.png")
 ```
 
-## Run the demo
+## License
 
-```bash
-python examples/demo.py   # writes chart_combo.png, chart_scatter.png, chart_hist.png
-```
-
-## Run the tests
-
-```bash
-pip install pytest
-pytest -q
-```
+MIT — see [LICENSE](LICENSE).

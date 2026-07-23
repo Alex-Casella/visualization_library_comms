@@ -1,10 +1,10 @@
-"""pandaviz -- a minimal, pandas-first visualization library.
+"""simple_eda.core -- the plotting engine.
 
-A thin, opinionated wrapper over matplotlib that turns DataFrames and Series
-into clean charts through a small fluent API. Import and go:
+A thin, opinionated wrapper over matplotlib that turns pandas DataFrames and
+Series into clean exploratory charts through a small fluent API:
 
     import pandas as pd
-    from pandaviz import Chart
+    from simple_eda import Chart
 
     df = pd.DataFrame({"month": [...], "sales": [...], "cost": [...]})
     (Chart(df, x="month")
@@ -16,13 +16,10 @@ into clean charts through a small fluent API. Import and go:
 
 from __future__ import annotations
 
-from typing import Iterable, Optional, Sequence, Union
+from typing import Optional, Sequence, Union
 
 import matplotlib.pyplot as plt
 import pandas as pd
-
-__version__ = "0.1.0"
-__all__ = ["Chart", "line", "bar", "scatter", "hist"]
 
 # A calm, colorblind-friendly categorical palette applied series-by-series.
 _PALETTE = ["#4C78A8", "#F58518", "#54A24B", "#E45756",
@@ -35,7 +32,7 @@ def _as_frame(data: Union[pd.DataFrame, pd.Series]) -> pd.DataFrame:
         return data.to_frame()
     if isinstance(data, pd.DataFrame):
         return data
-    raise TypeError("pandaviz expects a pandas DataFrame or Series, "
+    raise TypeError("simple_eda expects a pandas DataFrame or Series, "
                     f"got {type(data).__name__}")
 
 
