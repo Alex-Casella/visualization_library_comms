@@ -62,10 +62,10 @@ Every method returns the chart, so calls compose:
 
 | Method | What it does |
 | --- | --- |
-| `.line(y=None)` | One line per column in `y` (all non-x columns by default) |
-| `.bar(y=None)` | Grouped vertical bars |
-| `.scatter(y, size=None)` | Points of `y` vs `x`; `size` maps a column to point area |
-| `.hist(y, bins=20)` | Histogram of one numeric column |
+| `.line(y=None, highlight=None)` | Trend over time — one line per column in `y` (all non-x by default) |
+| `.bar(y=None, highlight=None)` | Compare groups — grouped vertical bars |
+| `.scatter(y, size=None, highlight=None)` | Relationship between two columns; `size` maps a column to point area |
+| `.hist(y, bins=20)` | Distribution of one numeric column |
 | `.title(text)` | Left-aligned bold title |
 | `.labels(x=, y=)` | Axis labels |
 | `.save(path, dpi=150)` | Write to a file |
@@ -74,6 +74,24 @@ Every method returns the chart, so calls compose:
 You can layer multiple calls onto one chart (e.g. `.bar(...).line(...)`); each
 series is assigned the next palette color automatically, and a legend appears
 when there's more than one series.
+
+### Design defaults
+
+`simple_eda` bakes in a few visualization best practices so you don't have to:
+
+- **Right format for the job** — `line` for trends over time, `bar` to compare
+  groups, `scatter` for relationships, `hist` for distributions.
+- **Minimal chartjunk** — no boxed-in spines, and a single subtle horizontal
+  grid instead of a full grid.
+- **A limited palette** — six calm, colorblind-friendly colors.
+- **Highlighting** — pass `highlight=` to draw the series (`line`) or
+  x-categories (`bar`/`scatter`) you want noticed in a bright accent color,
+  muting everything else to gray:
+
+  ```python
+  Chart(df, x="month").bar("revenue", highlight="Jun")   # accent June, mute the rest
+  Chart(df, x="month").line(["revenue", "cost"], highlight="revenue")
+  ```
 
 ### One-call helpers
 

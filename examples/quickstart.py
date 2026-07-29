@@ -1,7 +1,7 @@
 """Quickstart example for simple_eda.
 
-Runs the full fluent API against a small sales dataset and writes rendered
-charts to ``examples/images/``. Run it from the repo root:
+Demonstrates picking the right chart for the job and using a single accent
+color to highlight the point worth noticing. Renders to ``examples/images/``.
 
     pip install -e .
     python examples/quickstart.py
@@ -22,22 +22,28 @@ sales = pd.DataFrame({
     "cost": [90, 95, 100, 110, 118, 125],
 })
 
-# 1. Layered chart: cost as bars, revenue as a line, on one axes.
+# 1. Trend over time -> line. Two series; highlight the one that matters.
 (Chart(sales, x="month")
-    .bar("cost")
-    .line("revenue")
-    .title("First-half performance")
+    .line(["revenue", "cost"], highlight="revenue")
+    .title("Revenue is pulling away from cost")
     .labels(x="Month", y="USD (thousands)")
-    .save(str(IMAGES / "quickstart_combo.png")))
+    .save(str(IMAGES / "quickstart_line.png")))
 
-# 2. Scatter to eyeball the cost/revenue relationship.
+# 2. Compare groups -> bar. Accent the standout month, mute the rest.
+(Chart(sales, x="month")
+    .bar("revenue", highlight="Jun")
+    .title("June was the strongest month")
+    .labels(x="Month", y="Revenue (thousands)")
+    .save(str(IMAGES / "quickstart_bar.png")))
+
+# 3. Relationship between two variables -> scatter.
 (Chart(sales, x="cost")
     .scatter("revenue")
     .title("Revenue vs. cost")
-    .labels(x="Cost", y="Revenue")
+    .labels(x="Cost (thousands)", y="Revenue (thousands)")
     .save(str(IMAGES / "quickstart_scatter.png")))
 
-# 3. One-call helper for a distribution of month-over-month growth.
+# 4. Distribution -> histogram (one-call helper).
 growth = pd.DataFrame({"growth_pct": sales["revenue"].pct_change().fillna(0) * 100})
 (hist(growth, "growth_pct", bins=6)
     .title("Month-over-month revenue growth")

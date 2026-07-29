@@ -53,3 +53,23 @@ def test_save_writes_file(tmp_path):
 
 def test_convenience_line_helper():
     assert len(line(DF, x="x", y=["y1", "y2"]).ax.get_lines()) == 2
+
+
+def test_bar_highlight_accents_only_matching_x():
+    from simple_eda.core import _ACCENT, _MUTED
+    c = Chart(DF, x="x").bar("y1", highlight="b")
+    colors = [p.get_facecolor() for p in c.ax.patches]
+    import matplotlib.colors as mc
+    accent = mc.to_rgba(_ACCENT)
+    muted = mc.to_rgba(_MUTED)
+    # Exactly the "b" bar (index 1) is accented; the rest are muted.
+    assert colors[1] == accent
+    assert all(colors[i] == muted for i in (0, 2, 3))
+
+
+def test_line_highlight_accents_named_series():
+    from simple_eda.core import _ACCENT
+    import matplotlib.colors as mc
+    c = Chart(DF, x="x").line(["y1", "y2"], highlight="y2")
+    y2 = [ln for ln in c.ax.get_lines() if ln.get_label() == "y2"][0]
+    assert mc.to_rgba(y2.get_color()) == mc.to_rgba(_ACCENT)

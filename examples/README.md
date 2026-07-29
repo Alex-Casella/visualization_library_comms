@@ -8,7 +8,7 @@ visualization committed under `images/`.
 
 | Script | Renders |
 | --- | --- |
-| [`quickstart.py`](quickstart.py) | A layered bar+line chart, a scatter, and a histogram |
+| [`quickstart.py`](quickstart.py) | Picking the right chart per question, with a single accent color used to highlight the key point |
 
 Run any example from the repo root:
 
@@ -19,6 +19,11 @@ python examples/quickstart.py
 
 ## quickstart.py
 
-![combo](images/quickstart_combo.png)
+A line for the trend (revenue accented), a bar chart comparing months (the
+standout accented), a scatter for the cost/revenue relationship, and a
+histogram for the growth distribution.
+
+![line](images/quickstart_line.png)
+![bar](images/quickstart_bar.png)
 ![scatter](images/quickstart_scatter.png)
 ![hist](images/quickstart_hist.png)
