@@ -16,8 +16,11 @@ simple-eda-project/
 │   └── simple_eda/
 │       ├── __init__.py
 │       └── core.py
+├── datasets/
+│   └── nfl_2025_leaders_sample.csv
 ├── examples/
 │   ├── quickstart.py
+│   ├── nfl_leaders.py
 │   └── images/
 ├── tests/
 │   └── test_core.py
