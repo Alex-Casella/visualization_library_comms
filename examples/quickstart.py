@@ -1,7 +1,8 @@
 """Quickstart example for simple_eda.
 
 Demonstrates picking the right chart for the job and using a single accent
-color to highlight the point worth noticing. Renders to ``examples/images/``.
+color to highlight the point worth noticing, on a small illustrative weather
+dataset. Renders to ``examples/images/``.
 
     pip install -e .
     python examples/quickstart.py
@@ -16,38 +17,39 @@ from simple_eda import Chart, hist
 IMAGES = Path(__file__).parent / "images"
 IMAGES.mkdir(exist_ok=True)
 
-sales = pd.DataFrame({
+weather = pd.DataFrame({
     "month": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    "revenue": [120, 135, 128, 160, 172, 190],
-    "cost": [90, 95, 100, 110, 118, 125],
+    "high": [45, 50, 58, 67, 75, 84],
+    "low": [30, 33, 40, 48, 56, 64],
+    "rainfall": [3.1, 2.8, 3.5, 3.0, 4.2, 3.8],
 })
 
 # 1. Trend over time -> line. Two series; highlight the one that matters.
-(Chart(sales, x="month")
-    .line(["revenue", "cost"], highlight="revenue")
-    .title("Revenue is pulling away from cost")
-    .labels(x="Month", y="USD (thousands)")
+(Chart(weather, x="month")
+    .line(["high", "low"], highlight="high")
+    .title("Daytime highs climb into summer")
+    .labels(x="Month", y="Degrees (F)")
     .save(str(IMAGES / "quickstart_line.png")))
 
 # 2. Compare groups -> bar. Accent the standout month, mute the rest.
-(Chart(sales, x="month")
-    .bar("revenue", highlight="Jun")
-    .title("June was the strongest month")
-    .labels(x="Month", y="Revenue (thousands)")
+(Chart(weather, x="month")
+    .bar("rainfall", highlight="May", values=True, sort=True)
+    .title("May was the wettest month")
+    .labels(x="Month", y="Rainfall (inches)")
     .save(str(IMAGES / "quickstart_bar.png")))
 
 # 3. Relationship between two variables -> scatter.
-(Chart(sales, x="cost")
-    .scatter("revenue")
-    .title("Revenue vs. cost")
-    .labels(x="Cost (thousands)", y="Revenue (thousands)")
+(Chart(weather, x="low")
+    .scatter("high")
+    .title("Daily highs track the lows")
+    .labels(x="Low (F)", y="High (F)")
     .save(str(IMAGES / "quickstart_scatter.png")))
 
 # 4. Distribution -> histogram (one-call helper).
-growth = pd.DataFrame({"growth_pct": sales["revenue"].pct_change().fillna(0) * 100})
-(hist(growth, "growth_pct", bins=6)
-    .title("Month-over-month revenue growth")
-    .labels(x="Growth (%)", y="Months")
+swing = pd.DataFrame({"month_over_month": weather["high"].diff().fillna(0)})
+(hist(swing, "month_over_month", bins=6)
+    .title("Month-over-month change in high temp")
+    .labels(x="Change (F)", y="Months")
     .save(str(IMAGES / "quickstart_hist.png")))
 
 print("Wrote charts to", IMAGES)

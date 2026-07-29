@@ -21,9 +21,9 @@ python examples/quickstart.py
 
 ## quickstart.py
 
-A line for the trend (revenue accented), a bar chart comparing months (the
-standout accented), a scatter for the cost/revenue relationship, and a
-histogram for the growth distribution.
+A line for the trend (daytime highs accented), a bar chart comparing monthly
+rainfall (the wettest month accented), a scatter for the low-vs-high
+relationship, and a histogram for the month-over-month temperature change.
 
 ![line](images/quickstart_line.png)
 ![bar](images/quickstart_bar.png)

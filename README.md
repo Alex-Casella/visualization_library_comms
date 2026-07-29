@@ -44,17 +44,17 @@ import pandas as pd
 from simple_eda import Chart
 
 df = pd.DataFrame({
-    "month":   ["Jan", "Feb", "Mar", "Apr"],
-    "revenue": [120, 135, 128, 160],
-    "cost":    [90, 95, 100, 110],
+    "month": ["Jan", "Feb", "Mar", "Apr"],
+    "high":  [45, 50, 58, 67],
+    "low":   [30, 33, 40, 48],
 })
 
 (Chart(df, x="month")
-    .bar("cost")
-    .line("revenue")
-    .title("Q1 performance")
-    .labels(x="Month", y="USD (thousands)")
-    .save("q1.png"))
+    .bar("low")
+    .line("high")
+    .title("Temperatures climb into spring")
+    .labels(x="Month", y="Degrees (F)")
+    .save("temps.png"))
 ```
 
 `x` defaults to the DataFrame's index if you don't pass it, and each plotting
@@ -119,9 +119,9 @@ For quick plots without chaining:
 ```python
 from simple_eda import line, bar, dot, scatter, hist
 
-bar(df, x="player", y="yards", highlight="Passer A", values=True, sort=True).save("bar.png")
+bar(df, x="player", y="yards", highlight="Henry", values=True, sort=True).save("bar.png")
 dot(df, x="player", y="sacks").show()
-line(df, x="month", y="revenue").save("line.png")
+line(df, x="month", y="high").save("line.png")
 ```
 
 ## Run the tests
