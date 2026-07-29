@@ -1,0 +1,35 @@
+year,category,stat,unit,player,team,value
+2020,Passing,Passing Yards,yards,Deshaun Watson,HOU,4823
+2021,Passing,Passing Yards,yards,Tom Brady,TB,5316
+2022,Passing,Passing Yards,yards,Patrick Mahomes,KC,5250
+2023,Passing,Passing Yards,yards,Tua Tagovailoa,MIA,4624
+2024,Passing,Passing Yards,yards,Joe Burrow,CIN,4918
+2020,Passing,Passing TDs,touchdowns,Aaron Rodgers,GB,48
+2021,Passing,Passing TDs,touchdowns,Tom Brady,TB,43
+2022,Passing,Passing TDs,touchdowns,Patrick Mahomes,KC,41
+2023,Passing,Passing TDs,touchdowns,Dak Prescott,DAL,36
+2024,Passing,Passing TDs,touchdowns,Joe Burrow,CIN,43
+2020,Rushing,Rushing Yards,yards,Derrick Henry,TEN,2027
+2021,Rushing,Rushing Yards,yards,Jonathan Taylor,IND,1811
+2022,Rushing,Rushing Yards,yards,Josh Jacobs,LV,1653
+2023,Rushing,Rushing Yards,yards,Christian McCaffrey,SF,1459
+2024,Rushing,Rushing Yards,yards,Saquon Barkley,PHI,2005
+2020,Rushing,Rushing TDs,touchdowns,Derrick Henry,TEN,17
+2021,Rushing,Rushing TDs,touchdowns,Jonathan Taylor,IND,18
+2022,Rushing,Rushing TDs,touchdowns,Jamaal Williams,DET,17
+2023,Rushing,Rushing TDs,touchdowns,Raheem Mostert,MIA,18
+2020,Receiving,Receiving Yards,yards,Stefon Diggs,BUF,1535
+2021,Receiving,Receiving Yards,yards,Cooper Kupp,LAR,1947
+2022,Receiving,Receiving Yards,yards,Justin Jefferson,MIN,1809
+2023,Receiving,Receiving Yards,yards,Tyreek Hill,MIA,1799
+2024,Receiving,Receiving Yards,yards,Ja'Marr Chase,CIN,1708
+2020,Receiving,Receiving TDs,touchdowns,Davante Adams,GB,18
+2021,Receiving,Receiving TDs,touchdowns,Cooper Kupp,LAR,16
+2022,Receiving,Receiving TDs,touchdowns,Davante Adams,LV,14
+2023,Receiving,Receiving TDs,touchdowns,Mike Evans,TB,13
+2024,Receiving,Receiving TDs,touchdowns,Ja'Marr Chase,CIN,17
+2020,Defense,Sacks,sacks,T.J. Watt,PIT,15.0
+2021,Defense,Sacks,sacks,T.J. Watt,PIT,22.5
+2022,Defense,Sacks,sacks,Nick Bosa,SF,18.5
+2023,Defense,Sacks,sacks,T.J. Watt,PIT,19.0
+2024,Defense,Sacks,sacks,Trey Hendrickson,CIN,17.5

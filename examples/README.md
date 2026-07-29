@@ -9,7 +9,7 @@ visualization committed under `images/`.
 | Script | Renders |
 | --- | --- |
 | [`quickstart.py`](quickstart.py) | Picking the right chart per question, with a single accent color used to highlight the key point |
-| [`nfl_leaders.py`](nfl_leaders.py) | Bar chart per stat category from the NFL leaders dataset, accenting each league leader |
+| [`nfl_leaders.py`](nfl_leaders.py) | Analyzes NFL season leaders 2020–24: the standout season per category and the most consistent leaders |
 
 Run any example from the repo root:
 
@@ -31,15 +31,20 @@ histogram for the growth distribution.
 
 ## nfl_leaders.py
 
-Charts the NFL statistical leaders from
-[`../datasets/nfl_2025_leaders_sample.csv`](../datasets/nfl_2025_leaders_sample.csv)
-(illustrative sample data), accenting the league leader in each category.
+Analyzes the NFL season leaders in
+[`../datasets/nfl_leaders_2020_2024.csv`](../datasets/nfl_leaders_2020_2024.csv)
+(compiled from model knowledge — verify vs. PFR). For each category it accents
+the **standout (highest) season**, and a final chart ranks the **most
+consistent** leaders (most category-seasons led). Findings: peaks like Henry's
+2,027 rushing yards (2020), Brady's 5,316 passing yards (2021), Kupp's 1,947
+receiving yards (2021), and Watt's 22.5 sacks (2021) — with **T.J. Watt** the
+most consistent, leading a category in three of the five seasons.
 
-Bars are sorted, directly value-labeled, and accent the leader; the last chart
-is a dot/lollipop plot.
-
-![passing](images/nfl_passing_yards.png)
-![rushing](images/nfl_rushing_yards.png)
-![receiving](images/nfl_receiving_yards.png)
+![passing-yards](images/nfl_passing_yards.png)
+![passing-tds](images/nfl_passing_tds.png)
+![rushing-yards](images/nfl_rushing_yards.png)
+![rushing-tds](images/nfl_rushing_tds.png)
+![receiving-yards](images/nfl_receiving_yards.png)
+![receiving-tds](images/nfl_receiving_tds.png)
 ![sacks](images/nfl_sacks.png)
-![sacks-dot](images/nfl_sacks_dot.png)
+![consistency](images/nfl_consistency.png)

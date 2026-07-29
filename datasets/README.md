@@ -1,46 +1,49 @@
 # Datasets
 
-## `nfl_2025_leaders_sample.csv`
+## `nfl_leaders_2020_2024.csv`
 
-NFL statistical leaders in a tidy, one-row-per-record schema, ready to chart
-with `simple_eda` (see [`../examples/nfl_leaders.py`](../examples/nfl_leaders.py)).
+The NFL **season leader** in each major statistical category, 2020–2024, in a
+tidy one-row-per-record schema. Charted and analyzed by
+[`../examples/nfl_leaders.py`](../examples/nfl_leaders.py).
 
 | Column | Meaning |
 | --- | --- |
+| `year` | NFL season (2020–2024) |
 | `category` | Passing, Rushing, Receiving, Defense |
-| `stat` | e.g. Passing Yards, Rushing TDs, Sacks, Interceptions |
-| `unit` | yards, touchdowns, sacks, interceptions |
-| `rank` | 1 = leader in that stat |
-| `player` | player name |
-| `team` | team abbreviation (real) |
-| `value` | the stat total |
+| `stat` | Passing Yards, Passing TDs, Rushing Yards, Rushing TDs, Receiving Yards, Receiving TDs, Sacks |
+| `unit` | yards, touchdowns, sacks |
+| `player` | player who led the league that season |
+| `team` | team abbreviation |
+| `value` | the league-leading total |
 
-> **⚠️ This is illustrative SAMPLE data, not real results.** Player names are
-> placeholders (`Passer A`, `Rusher B`, …) and the values are plausible but
-> invented. It exists so the charts run out of the box. Do not cite these
-> numbers.
+### ⚠️ Provenance — read this
 
-### Loading the real 2025 leaders
+`pro-football-reference.com` **blocks automated access** (HTTP 403), so this
+data could **not** be scraped. The values were **compiled from model knowledge
+and have not been verified against the source.** Treat them as a starting point
+and confirm against PFR before citing. The marquee leaders (e.g., Henry's 2,027
+rushing yards in 2020, Watt's 22.5 sacks in 2021, Kupp's 1,947 receiving yards
+in 2021) are well documented; the cells below are lower confidence:
 
-The source page — <https://www.pro-football-reference.com/years/2025/leaders.htm>
-— blocks automated requests (HTTP 403), so it can't be scraped from this
-environment. To populate real data, do one of the following, then re-run
-`python examples/nfl_leaders.py`:
+- **2020 Sacks** (T.J. Watt, 15.0) — leader/total is approximate.
+- **2022–2023 Rushing TDs** (Williams 17; Mostert 18) — approximate.
+- **2022–2023 Receiving TDs** (Adams 14; Evans 13) — approximate.
+- **Rushing TDs 2024** is intentionally omitted (couldn't verify the leader).
+- **2025** is omitted entirely — it's at the model's knowledge cutoff and
+  can't be verified.
 
-1. **CSV export (easiest).** On each PFR leaderboard table, use
-   *Share & Export → Get table as CSV*, then reshape the rows into the tidy
-   schema above and overwrite this file.
-2. **Save the page, parse locally.** Open the URL in a browser, save the HTML,
-   and parse it without sending the markup through an assistant:
+### Filling in verified data
 
-   ```python
-   import pandas as pd
-   # PFR wraps many tables in HTML comments; flavor="lxml" + this call
-   # usually surfaces them. Inspect tables and map into the tidy schema.
-   tables = pd.read_html("saved_leaders.html")
-   for i, t in enumerate(tables):
-       print(i, t.shape, list(t.columns)[:6])
-   ```
+Overwrite this file with real numbers (same schema) and re-run
+`python examples/nfl_leaders.py`. Because PFR blocks scraping here, get the
+data via its *Share & Export → Get table as CSV* on each leaderboard, or save
+the page and parse it locally with `pandas.read_html(...)` — keeping the parse
+local means the raw HTML never passes through an assistant's context (see the
+token note in the top-level README).
 
-Keeping the parse local (a file + pandas) means the raw HTML never has to pass
-through the assistant's context — see the token note in the top-level README.
+### Scope note
+
+This file tracks the **rank-1 leader** per stat per season (not the top 5), so
+that every value is one I can reasonably stand behind. That's enough to answer
+"who stands out in each category?" and "who leads consistently?" — add more
+rows in the same schema if you want full top-N depth.

@@ -17,7 +17,7 @@ simple-eda-project/
 │       ├── __init__.py
 │       └── core.py
 ├── datasets/
-│   └── nfl_2025_leaders_sample.csv
+│   └── nfl_leaders_2020_2024.csv
 ├── examples/
 │   ├── quickstart.py
 │   ├── nfl_leaders.py
