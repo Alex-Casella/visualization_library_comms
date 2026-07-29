@@ -25,6 +25,7 @@ simple-eda-project/
 │   ├── nfl_leaders.py
 │   ├── nfl_totals.py
 │   ├── nfl_positions.py
+│   ├── nfl_seaborn.py
 │   └── images/
 ├── tests/
 │   └── test_core.py

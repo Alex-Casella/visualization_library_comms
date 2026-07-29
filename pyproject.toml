@@ -17,6 +17,7 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest>=7"]
+viz = ["seaborn>=0.12"]   # for the seaborn example (examples/nfl_seaborn.py)
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -40,11 +40,12 @@ for pos, blurb in POSITIONS.items():
     best = g.iloc[0]
     print(f"  {pos:5s}: {best['player']} ({best['team']}) "
           f"~{best['total']:g} {best['unit']}")
+    # A horizontal dot / lollipop plot reads cleanly for a top-5 ranking.
     (Chart(g, x="last")
-        .bar("total", highlight=best["last"], values=True, sort=True)
+        .dot("total", highlight=best["last"], values=True)
         .title(f"Top 5 {pos}s by {blurb}, 2020-24 — {best['last']} leads")
         .subtitle(CAVEAT)
-        .labels(x=pos, y=f"Total {g['unit'].iloc[0]} (approx)")
+        .labels(x=f"Total {g['unit'].iloc[0]} (approx)")
         .save(str(IMAGES / f"nfl_top5_{pos.lower()}.png")))
 
 print("\nWrote charts to", IMAGES)

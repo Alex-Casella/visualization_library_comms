@@ -11,13 +11,21 @@ visualization committed under `images/`.
 | [`quickstart.py`](quickstart.py) | A tour of the chart types on the NFL leaders dataset: line, bar, dot, and histogram |
 | [`nfl_leaders.py`](nfl_leaders.py) | Analyzes NFL season leaders 2020–24: the standout season per category and the most consistent leaders |
 | [`nfl_totals.py`](nfl_totals.py) | Aggregates leaders across seasons (not split by year) and surfaces the accumulation outliers |
-| [`nfl_positions.py`](nfl_positions.py) | Top 5 at each position over 2020–24, ordered by the stat, best player accented |
+| [`nfl_positions.py`](nfl_positions.py) | Top 5 at each position over 2020–24 as dot/lollipop plots, best player accented |
+| [`nfl_seaborn.py`](nfl_seaborn.py) | Non-bar variety via **seaborn**: a heatmap, faceted small-multiple line trends, and a top-5 drop-off chart |
 
 Run any example from the repo root:
 
 ```bash
 pip install -e .
 python examples/quickstart.py
+```
+
+The `nfl_seaborn.py` example additionally needs seaborn:
+
+```bash
+pip install -e ".[viz]"
+python examples/nfl_seaborn.py
 ```
 
 ## quickstart.py
@@ -75,3 +83,14 @@ Allen) and WR (vs. Tyreek Hill) are close calls.
 ![rb](images/nfl_top5_rb.png)
 ![wr](images/nfl_top5_wr.png)
 ![edge](images/nfl_top5_edge.png)
+
+## nfl_seaborn.py
+
+Variety beyond the matplotlib bars, using **seaborn** (`pip install -e ".[viz]"`):
+a **heatmap** of how hot/cold each season's leader ran per stat, **faceted
+small-multiple line trends** (one panel per stat), and a **drop-off line chart**
+comparing how steeply the top 5 falls off at each position.
+
+![heatmap](images/seaborn_heatmap.png)
+![trends](images/seaborn_trends.png)
+![dropoff](images/seaborn_dropoff.png)
