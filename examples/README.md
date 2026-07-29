@@ -11,6 +11,7 @@ visualization committed under `images/`.
 | [`quickstart.py`](quickstart.py) | A tour of the chart types on the NFL leaders dataset: line, bar, dot, and histogram |
 | [`nfl_leaders.py`](nfl_leaders.py) | Analyzes NFL season leaders 2020–24: the standout season per category and the most consistent leaders |
 | [`nfl_totals.py`](nfl_totals.py) | Aggregates leaders across seasons (not split by year) and surfaces the accumulation outliers |
+| [`nfl_positions.py`](nfl_positions.py) | Top 5 at each position over 2020–24, ordered by the stat, best player accented |
 
 Run any example from the repo root:
 
@@ -61,3 +62,16 @@ and **Davante Adams** (32 receiving TDs).
 
 ![total-sacks](images/nfl_total_sacks.png)
 ![total-receiving-tds](images/nfl_total_receiving_tds.png)
+
+## nfl_positions.py
+
+The **top 5 at each position** over 2020–24, each chart ordered highest-to-
+lowest with the best player accented (approximate totals — verify vs. PFR).
+Best at each position by these estimates: **QB Patrick Mahomes**, **RB Derrick
+Henry**, **WR Justin Jefferson**, **Edge T.J. Watt** — though QB (vs. Josh
+Allen) and WR (vs. Tyreek Hill) are close calls.
+
+![qb](images/nfl_top5_qb.png)
+![rb](images/nfl_top5_rb.png)
+![wr](images/nfl_top5_wr.png)
+![edge](images/nfl_top5_edge.png)

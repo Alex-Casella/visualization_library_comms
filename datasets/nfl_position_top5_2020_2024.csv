@@ -1,0 +1,21 @@
+position,stat,unit,rank,player,team,total
+QB,Passing Yards,yards,1,Patrick Mahomes,KC,22900
+QB,Passing Yards,yards,2,Josh Allen,BUF,21300
+QB,Passing Yards,yards,3,Justin Herbert,LAC,21100
+QB,Passing Yards,yards,4,Jared Goff,DET,20000
+QB,Passing Yards,yards,5,Kirk Cousins,MIN,18000
+RB,Rushing Yards,yards,1,Derrick Henry,TEN,7600
+RB,Rushing Yards,yards,2,Jonathan Taylor,IND,6000
+RB,Rushing Yards,yards,3,Josh Jacobs,LV,5700
+RB,Rushing Yards,yards,4,Saquon Barkley,NYG,4900
+RB,Rushing Yards,yards,5,Nick Chubb,CLE,4100
+WR,Receiving Yards,yards,1,Justin Jefferson,MIN,7400
+WR,Receiving Yards,yards,2,Tyreek Hill,MIA,7000
+WR,Receiving Yards,yards,3,Davante Adams,LV,6400
+WR,Receiving Yards,yards,4,CeeDee Lamb,DAL,6300
+WR,Receiving Yards,yards,5,Stefon Diggs,BUF,5900
+Edge,Sacks,sacks,1,T.J. Watt,PIT,73.5
+Edge,Sacks,sacks,2,Myles Garrett,CLE,72.0
+Edge,Sacks,sacks,3,Maxx Crosby,LV,55.0
+Edge,Sacks,sacks,4,Nick Bosa,SF,52.0
+Edge,Sacks,sacks,5,Trey Hendrickson,CIN,50.0

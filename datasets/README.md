@@ -78,3 +78,32 @@ player led more than once:
 To get true multi-year career totals, you'd need every player's per-season
 stats (blocked here) — drop them into `nfl_leaders_2020_2024.csv` and re-run
 `python examples/nfl_totals.py` to rebuild this file.
+
+---
+
+## `nfl_position_top5_2020_2024.csv`
+
+The **top 5 players at each position** over 2020–2024, by the defining volume
+stat: QB (passing yards), RB (rushing yards), WR (receiving yards), Edge
+(sacks). Charted by [`../examples/nfl_positions.py`](../examples/nfl_positions.py).
+
+| Column | Meaning |
+| --- | --- |
+| `position` | QB, RB, WR, Edge |
+| `stat`, `unit` | the ranking stat and its unit |
+| `rank` | 1 = best at that position over the span |
+| `player`, `team` | player and primary team |
+| `total` | **approximate** five-season total in that stat |
+
+### ⚠️ These are approximate, unverified estimates
+
+Because PFR can't be scraped here, these five-season totals were **estimated
+from model knowledge and rounded** (to signal they aren't exact). The
+**ordering** is broadly defensible, but the **numbers are approximate** and some
+races are close — verify against PFR before relying on them:
+
+- **RB (Derrick Henry) and Edge (T.J. Watt)** — fairly clear #1s.
+- **QB (Mahomes vs. Josh Allen)** and **WR (Jefferson vs. Tyreek Hill)** — close
+  at the top; the #1 could flip once verified.
+- Totals are also affected by games missed to injury (e.g., Chubb, Diggs), which
+  these round-number estimates only roughly capture.
