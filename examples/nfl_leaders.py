@@ -36,10 +36,21 @@ for stat, title, ylabel in charts:
     top = leaders[leaders["stat"] == stat].sort_values("value", ascending=False)
     leader = top.iloc[0]["player"]
     slug = stat.lower().replace(" ", "_")
+    # Direct value labels + sorted bars + accented leader (checklist-aligned).
     (Chart(top, x="player")
-        .bar("value", highlight=leader)
+        .bar("value", highlight=leader, values=True, sort=True)
         .title(f"{title} (2025, sample data)")
+        .subtitle(f"{leader} leads the league")
         .labels(x="Player", y=ylabel)
         .save(str(IMAGES / f"nfl_{slug}.png")))
+
+# A dot plot -- the Chart Chooser's pick for comparing values across groups.
+sacks = leaders[leaders["stat"] == "Sacks"]
+(Chart(sacks, x="player")
+    .dot("value", highlight=sacks.sort_values("value").iloc[-1]["player"], values=True)
+    .title("Sack leaders (2025, sample data)")
+    .subtitle("A dot plot compares values with minimal ink")
+    .labels(x="Sacks")
+    .save(str(IMAGES / "nfl_sacks_dot.png")))
 
 print("Wrote NFL leader charts to", IMAGES)

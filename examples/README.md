@@ -35,7 +35,11 @@ Charts the NFL statistical leaders from
 [`../datasets/nfl_2025_leaders_sample.csv`](../datasets/nfl_2025_leaders_sample.csv)
 (illustrative sample data), accenting the league leader in each category.
 
+Bars are sorted, directly value-labeled, and accent the leader; the last chart
+is a dot/lollipop plot.
+
 ![passing](images/nfl_passing_yards.png)
 ![rushing](images/nfl_rushing_yards.png)
 ![receiving](images/nfl_receiving_yards.png)
 ![sacks](images/nfl_sacks.png)
+![sacks-dot](images/nfl_sacks_dot.png)

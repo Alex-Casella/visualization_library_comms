@@ -65,35 +65,49 @@ Every method returns the chart, so calls compose:
 
 | Method | What it does |
 | --- | --- |
-| `.line(y=None, highlight=None)` | Trend over time — one line per column in `y` (all non-x by default) |
-| `.bar(y=None, highlight=None)` | Compare groups — grouped vertical bars |
+| `.line(y=None, highlight=None, label_lines=False)` | Trend over time; `label_lines` labels each line directly |
+| `.bar(y=None, highlight=None, values=False, sort=False)` | Compare groups; `values` labels bars, `sort` orders descending |
+| `.dot(y=None, highlight=None, values=False, sort=True)` | Dot / lollipop plot — ink-light comparison across groups |
 | `.scatter(y, size=None, highlight=None)` | Relationship between two columns; `size` maps a column to point area |
 | `.hist(y, bins=20)` | Distribution of one numeric column |
-| `.title(text)` | Left-aligned bold title |
+| `.title(text)` | Descriptive, left-aligned title (aim for 6–12 words) |
+| `.subtitle(text)` | Smaller gray subtitle for context/annotation |
 | `.labels(x=, y=)` | Axis labels |
-| `.save(path, dpi=150)` | Write to a file |
-| `.show()` | Open an interactive window |
+| `.save(path, dpi=150)` / `.show()` | Write to a file / open a window |
 
 You can layer multiple calls onto one chart (e.g. `.bar(...).line(...)`); each
 series is assigned the next palette color automatically, and a legend appears
-when there's more than one series.
+when there's more than one series (or use direct labels and drop it).
 
 ### Design defaults
 
-`simple_eda` bakes in a few visualization best practices so you don't have to:
+`simple_eda` bakes in the guidance from two references so you don't have to
+remember it on every chart:
 
-- **Right format for the job** — `line` for trends over time, `bar` to compare
-  groups, `scatter` for relationships, `hist` for distributions.
-- **Minimal chartjunk** — no boxed-in spines, and a single subtle horizontal
-  grid instead of a full grid.
-- **A limited palette** — six calm, colorblind-friendly colors.
-- **Highlighting** — pass `highlight=` to draw the series (`line`) or
-  x-categories (`bar`/`scatter`) you want noticed in a bright accent color,
-  muting everything else to gray:
+- **[Evergreen Quantitative Chart Chooser](https://stephanieevergreen.com/)** —
+  the chart types match its recommendations: `line` for change over time,
+  `bar`/`dot` to compare groups, `scatter` for a relationship, `hist` for a
+  distribution.
+- **[Evergreen/Emery Data Visualization Checklist](https://stephanieevergreen.com/)** —
+  the defaults implement its rules:
+
+  | Checklist rule | How `simple_eda` applies it |
+  | --- | --- |
+  | Descriptive title, left-justified | `.title()` is bold, left-aligned |
+  | Subtitle / annotations | `.subtitle()` adds gray context under the title |
+  | Data labeled directly, drop the legend | `values=True` on `bar`/`dot`, `label_lines=True` on `line` |
+  | Data intentionally ordered | `sort=True` on `bar`/`dot` |
+  | Color highlights the key point; rest muted | `highlight=` → one accent color, everything else gray |
+  | Limited, colorblind-safe palette | six-color palette |
+  | Muted gridlines, no chartjunk | one faint horizontal grid, no tick marks, no top/right spines |
+  | Two-dimensional, no decoration | flat 2D marks only |
 
   ```python
-  Chart(df, x="month").bar("revenue", highlight="Jun")   # accent June, mute the rest
-  Chart(df, x="month").line(["revenue", "cost"], highlight="revenue")
+  # Accent the leader, sort bars, label them directly, add a "so what?" subtitle
+  (Chart(df, x="player")
+      .bar("yards", highlight="Passer A", values=True, sort=True)
+      .title("Passer A leads the league in passing yards")
+      .subtitle("2025 season, top five"))
   ```
 
 ### One-call helpers
@@ -101,11 +115,11 @@ when there's more than one series.
 For quick plots without chaining:
 
 ```python
-from simple_eda import line, bar, scatter, hist
+from simple_eda import line, bar, dot, scatter, hist
 
+bar(df, x="player", y="yards", highlight="Passer A", values=True, sort=True).save("bar.png")
+dot(df, x="player", y="sacks").show()
 line(df, x="month", y="revenue").save("line.png")
-scatter(df, x="cost", y="revenue").show()
-hist(df, "revenue", bins=10).save("dist.png")
 ```
 
 ## Run the tests

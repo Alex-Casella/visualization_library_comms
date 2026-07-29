@@ -6,7 +6,7 @@ matplotlib.use("Agg")
 import pandas as pd
 import pytest
 
-from simple_eda import Chart, bar, hist, line, scatter
+from simple_eda import Chart, bar, dot, hist, line, scatter
 
 DF = pd.DataFrame({
     "x": ["a", "b", "c", "d"],
@@ -73,3 +73,26 @@ def test_line_highlight_accents_named_series():
     c = Chart(DF, x="x").line(["y1", "y2"], highlight="y2")
     y2 = [ln for ln in c.ax.get_lines() if ln.get_label() == "y2"][0]
     assert mc.to_rgba(y2.get_color()) == mc.to_rgba(_ACCENT)
+
+
+def test_bar_values_labels_every_bar():
+    c = Chart(DF, x="x").bar("y1", values=True)
+    texts = [t.get_text() for t in c.ax.texts]
+    assert {"1", "3", "2", "5"}.issubset(set(texts))
+
+
+def test_bar_sort_orders_descending():
+    c = Chart(DF, x="x").bar("y1", sort=True)
+    labels = [t.get_text() for t in c.ax.get_xticklabels()]
+    assert labels[0] == "d"  # y1 max (5) first
+
+
+def test_dot_plots_one_point_per_row():
+    c = Chart(DF, x="x").dot("y1")
+    # dot() draws stems (hlines) + one marker per row (scatter)
+    n_points = max(len(col.get_offsets()) for col in c.ax.collections)
+    assert n_points == len(DF)
+
+
+def test_dot_helper_runs():
+    assert dot(DF, x="x", y="y2").ax.collections
