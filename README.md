@@ -17,10 +17,12 @@ simple-eda-project/
 │       ├── __init__.py
 │       └── core.py
 ├── datasets/
-│   └── nfl_leaders_2020_2024.csv
+│   ├── nfl_leaders_2020_2024.csv
+│   └── nfl_leader_totals_2020_2024.csv
 ├── examples/
 │   ├── quickstart.py
 │   ├── nfl_leaders.py
+│   ├── nfl_totals.py
 │   └── images/
 ├── tests/
 │   └── test_core.py

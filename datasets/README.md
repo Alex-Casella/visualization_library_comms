@@ -47,3 +47,34 @@ This file tracks the **rank-1 leader** per stat per season (not the top 5), so
 that every value is one I can reasonably stand behind. That's enough to answer
 "who stands out in each category?" and "who leads consistently?" — add more
 rows in the same schema if you want full top-N depth.
+
+---
+
+## `nfl_leader_totals_2020_2024.csv`
+
+A season-agnostic **aggregation** of the file above, built by
+[`../examples/nfl_totals.py`](../examples/nfl_totals.py): one row per
+`(player, stat)`, summing across the seasons that player led the league.
+
+| Column | Meaning |
+| --- | --- |
+| `player`, `category`, `stat`, `unit` | as above |
+| `total` | sum of the player's values across their league-leading seasons |
+| `seasons_led` | how many seasons that total covers |
+| `years` | the specific seasons (e.g., `2020;2021;2023`) |
+| `teams` | team(s) over those seasons |
+
+### ⚠️ What `total` is — and isn't
+
+`total` is the sum across the seasons a player **led the league**, **not** their
+full 2020–2024 output. Because the source has only each season's leader, a
+player who led once has a `total` equal to that single season (see `years`/
+`seasons_led` to tell them apart). The aggregation only adds signal where a
+player led more than once:
+
+- **T.J. Watt — 56.5 sacks** across three leading seasons (2020, 2021, 2023).
+- **Davante Adams — 32 receiving TDs** across two (2020 GB, 2022 LV).
+
+To get true multi-year career totals, you'd need every player's per-season
+stats (blocked here) — drop them into `nfl_leaders_2020_2024.csv` and re-run
+`python examples/nfl_totals.py` to rebuild this file.

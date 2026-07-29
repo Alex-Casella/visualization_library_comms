@@ -1,0 +1,32 @@
+player,category,stat,unit,total,seasons_led,years,teams
+Aaron Rodgers,Passing,Passing TDs,touchdowns,48.0,1,2020,GB
+Tom Brady,Passing,Passing TDs,touchdowns,43.0,1,2021,TB
+Joe Burrow,Passing,Passing TDs,touchdowns,43.0,1,2024,CIN
+Patrick Mahomes,Passing,Passing TDs,touchdowns,41.0,1,2022,KC
+Dak Prescott,Passing,Passing TDs,touchdowns,36.0,1,2023,DAL
+Tom Brady,Passing,Passing Yards,yards,5316.0,1,2021,TB
+Patrick Mahomes,Passing,Passing Yards,yards,5250.0,1,2022,KC
+Joe Burrow,Passing,Passing Yards,yards,4918.0,1,2024,CIN
+Deshaun Watson,Passing,Passing Yards,yards,4823.0,1,2020,HOU
+Tua Tagovailoa,Passing,Passing Yards,yards,4624.0,1,2023,MIA
+Davante Adams,Receiving,Receiving TDs,touchdowns,32.0,2,2020;2022,GB;LV
+Ja'Marr Chase,Receiving,Receiving TDs,touchdowns,17.0,1,2024,CIN
+Cooper Kupp,Receiving,Receiving TDs,touchdowns,16.0,1,2021,LAR
+Mike Evans,Receiving,Receiving TDs,touchdowns,13.0,1,2023,TB
+Cooper Kupp,Receiving,Receiving Yards,yards,1947.0,1,2021,LAR
+Justin Jefferson,Receiving,Receiving Yards,yards,1809.0,1,2022,MIN
+Tyreek Hill,Receiving,Receiving Yards,yards,1799.0,1,2023,MIA
+Ja'Marr Chase,Receiving,Receiving Yards,yards,1708.0,1,2024,CIN
+Stefon Diggs,Receiving,Receiving Yards,yards,1535.0,1,2020,BUF
+Jonathan Taylor,Rushing,Rushing TDs,touchdowns,18.0,1,2021,IND
+Raheem Mostert,Rushing,Rushing TDs,touchdowns,18.0,1,2023,MIA
+Derrick Henry,Rushing,Rushing TDs,touchdowns,17.0,1,2020,TEN
+Jamaal Williams,Rushing,Rushing TDs,touchdowns,17.0,1,2022,DET
+Derrick Henry,Rushing,Rushing Yards,yards,2027.0,1,2020,TEN
+Saquon Barkley,Rushing,Rushing Yards,yards,2005.0,1,2024,PHI
+Jonathan Taylor,Rushing,Rushing Yards,yards,1811.0,1,2021,IND
+Josh Jacobs,Rushing,Rushing Yards,yards,1653.0,1,2022,LV
+Christian McCaffrey,Rushing,Rushing Yards,yards,1459.0,1,2023,SF
+T.J. Watt,Defense,Sacks,sacks,56.5,3,2020;2021;2023,PIT
+Nick Bosa,Defense,Sacks,sacks,18.5,1,2022,SF
+Trey Hendrickson,Defense,Sacks,sacks,17.5,1,2024,CIN

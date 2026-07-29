@@ -10,6 +10,7 @@ visualization committed under `images/`.
 | --- | --- |
 | [`quickstart.py`](quickstart.py) | Picking the right chart per question, with a single accent color used to highlight the key point |
 | [`nfl_leaders.py`](nfl_leaders.py) | Analyzes NFL season leaders 2020–24: the standout season per category and the most consistent leaders |
+| [`nfl_totals.py`](nfl_totals.py) | Aggregates leaders across seasons (not split by year) and surfaces the accumulation outliers |
 
 Run any example from the repo root:
 
@@ -48,3 +49,14 @@ most consistent, leading a category in three of the five seasons.
 ![receiving-tds](images/nfl_receiving_tds.png)
 ![sacks](images/nfl_sacks.png)
 ![consistency](images/nfl_consistency.png)
+
+## nfl_totals.py
+
+Builds [`../datasets/nfl_leader_totals_2020_2024.csv`](../datasets/nfl_leader_totals_2020_2024.csv)
+by summing each player's totals across the seasons they led the league (see the
+dataset README for what that total does and doesn't mean). The two stats where
+leading multiple times creates a genuine outlier: **T.J. Watt** (56.5 sacks)
+and **Davante Adams** (32 receiving TDs).
+
+![total-sacks](images/nfl_total_sacks.png)
+![total-receiving-tds](images/nfl_total_receiving_tds.png)
