@@ -44,17 +44,15 @@ import pandas as pd
 from simple_eda import Chart
 
 df = pd.DataFrame({
-    "month": ["Jan", "Feb", "Mar", "Apr"],
-    "high":  [45, 50, 58, 67],
-    "low":   [30, 33, 40, 48],
+    "player": ["Henry", "Taylor", "Jacobs", "McCaffrey", "Barkley"],
+    "yards":  [2027, 1811, 1653, 1459, 2005],
 })
 
-(Chart(df, x="month")
-    .bar("low")
-    .line("high")
-    .title("Temperatures climb into spring")
-    .labels(x="Month", y="Degrees (F)")
-    .save("temps.png"))
+(Chart(df, x="player")
+    .bar("yards", highlight="Henry", values=True, sort=True)
+    .title("Henry's 2,027 tops the rushing leaders, 2020-24")
+    .labels(x="Rushing-yards leader", y="Yards")
+    .save("rushing.png"))
 ```
 
 `x` defaults to the DataFrame's index if you don't pass it, and each plotting

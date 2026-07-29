@@ -8,7 +8,7 @@ visualization committed under `images/`.
 
 | Script | Renders |
 | --- | --- |
-| [`quickstart.py`](quickstart.py) | Picking the right chart per question, with a single accent color used to highlight the key point |
+| [`quickstart.py`](quickstart.py) | A tour of the chart types on the NFL leaders dataset: line, bar, dot, and histogram |
 | [`nfl_leaders.py`](nfl_leaders.py) | Analyzes NFL season leaders 2020–24: the standout season per category and the most consistent leaders |
 | [`nfl_totals.py`](nfl_totals.py) | Aggregates leaders across seasons (not split by year) and surfaces the accumulation outliers |
 
@@ -21,13 +21,14 @@ python examples/quickstart.py
 
 ## quickstart.py
 
-A line for the trend (daytime highs accented), a bar chart comparing monthly
-rainfall (the wettest month accented), a scatter for the low-vs-high
-relationship, and a histogram for the month-over-month temperature change.
+A tour of the chart types on the NFL season-leaders dataset: a **line** for the
+passing-yards crown over time, a **bar** for rushing-yards leaders (standout
+accented), a **dot** plot for receiving-yards leaders, and a **histogram** for
+the spread of skill-position yardage leaders.
 
 ![line](images/quickstart_line.png)
 ![bar](images/quickstart_bar.png)
-![scatter](images/quickstart_scatter.png)
+![dot](images/quickstart_dot.png)
 ![hist](images/quickstart_hist.png)
 
 ## nfl_leaders.py
